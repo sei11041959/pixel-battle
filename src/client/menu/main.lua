@@ -1,4 +1,4 @@
-require("MainMenu.button")
+require("menu.button")
 
 menu = {}
 

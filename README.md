@@ -1,6 +1,5 @@
-# Pixel-Battle
+# ![logo](./docs/art/logo.png)
 
-<img src="./docs/art/love.png" width = "30%">
 ロゴ製作途中
 
 ## 概要
