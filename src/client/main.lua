@@ -8,6 +8,7 @@ local collider = {}
 function love.load()
 	Map = sti("assets/maps/menu.lua", {"box2d"})
 	world = wf.newWorld(0, 0)
+    world:setCallbacks(beginContact,endContact)
     if Map.layers["collide"] then
         Map.layers.collide.visible = false
         for i, obj in ipairs(Map.layers["collide"].objects) do
@@ -30,4 +31,16 @@ function love.draw()
 	love.graphics.push()
 	Player:draw()
 	love.graphics.pop()
+end
+
+function love.keypressed(key)
+    Player:jump(key)
+end
+
+function beginContact(a, b , collision)
+    Player:beginContact(a, b , collision)
+end
+
+function endContact(a, b , collision)
+    Player:endContact(a, b , collision)
 end
