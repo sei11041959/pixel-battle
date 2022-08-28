@@ -1,23 +1,13 @@
-local sti = require("lib.sti")
 local wf = require('lib.windfield')
 
+require("menu.map")
 require("player")
 
-local collider = {}
-
 function love.load()
-    love.physics.setMeter(32)
-	Map = sti("assets/maps/menu.lua", {"box2d"})
 	world = wf.newWorld(0, 0)
+    world:addCollisionClass('Player')
     world:setCallbacks(beginContact,endContact)
-    if Map.layers["collide"] then
-        Map.layers.collide.visible = false
-        for i, obj in ipairs(Map.layers["collide"].objects) do
-            local collide = world:newRectangleCollider(obj.x,obj.y,obj.width,obj.height)
-            collide:setType("static")
-            table.insert(collider,collide)
-        end
-    end
+    map:load()
 	Player:load()
 end
 
@@ -27,7 +17,7 @@ function love.update(dt)
 end
 
 function love.draw()
-	Map:draw(0, 0)
+    map:draw()
     world:draw()
 	love.graphics.push()
 	Player:draw()

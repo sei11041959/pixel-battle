@@ -5,9 +5,9 @@ Player = {}
 function Player:load()
     self.x = love.graphics.getWidth() / 2
     self.y = 0
-    self.width = 40
-    self.height = 120
-    self.speed = 200
+    self.width = 20
+    self.height = 100
+    self.speed = 300
     self.xVel = 0
     self.yVel = 0
 
@@ -16,11 +16,13 @@ function Player:load()
     self.acceleration = 4000 * self.pm
     self.friction = 3500 * self.pm
     self.gravity = 2000
-    self.jumpamount = -600
+    self.jumpamount = -800
     self.grounded = false
+    self.ceiling = false
 
     self.physics = {}
     self.physics.body = world:newRectangleCollider(self.x,self.y,self.width,self.height)
+    self.physics.body:setCollisionClass('Player')
     self.physics.body:setFixedRotation(true)
     self.physics.fixtures = self.physics.body:getFixtures()
 end
@@ -88,12 +90,16 @@ function Player:beginContact(a, b , collision)
     local nx ,ny = collision:getNormal()
     for i, fixture in ipairs(self.physics.fixtures) do
         if a == fixture then
-            if ny > 0 then
-                self:land(collision)
+            if ny < 0 then
+                self:onGround(collision)
+            elseif ny == 1 then
+                self:nonGround(collision)
             end
         elseif b == fixture then
             if ny < 0 then
-                self:land(collision)
+                self:onGround(collision)
+            elseif ny == 1 then
+                self:nonGround(collision)
             end
         end
     end
@@ -102,22 +108,34 @@ end
 
 function Player:endContact(a, b , collision)
     for i, fixture in ipairs(self.physics.fixtures) do
-        if a == fixture or b == fixture then
+        local nx ,ny = collision:getNormal()
+        if a == fixture then
             if self.currentGroundCollision == collision then
-               self.grounded = false
+                self.grounded = false
+            end
+        end
+        if b == fixture then
+            if self.currentGroundCollision == collision then
+                self.grounded = false
             end
         end
     end
 end
 
-function Player:land(collision)
+function Player:onGround(collision)
     self.currentGroundCollision = collision
     self.yVel = 0
     self.grounded = true
 end
 
+function Player:nonGround(collision)
+    self.currentGroundCollision = collision
+    self.yVel = 0
+    self.grounded = false
+end
+
 function Player:jump(key)
-    if (key == "w" or key == "up") and self.grounded == true then
+    if (key == "w" or key == "up" or key == "space") and self.grounded == true then
         self.yVel = self.jumpamount
         self.grounded = false
     end
