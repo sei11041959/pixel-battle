@@ -1,4 +1,6 @@
-# ![logo](./docs/art/logo.png)
+# pixel-battle
+
+<!-- ![logo](./docs/art/logo.png) -->
 
 ロゴ製作途中
 
