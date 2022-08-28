@@ -5,8 +5,8 @@ Player = {}
 function Player:load()
     self.x = love.graphics.getWidth() / 2
     self.y = 0
-    self.width = 20
-    self.height = 60
+    self.width = 40
+    self.height = 120
     self.speed = 200
     self.xVel = 0
     self.yVel = 0
@@ -15,7 +15,7 @@ function Player:load()
     self.maxspeed = 200 * self.pm
     self.acceleration = 4000 * self.pm
     self.friction = 3500 * self.pm
-    self.gravity = 1500
+    self.gravity = 2000
     self.jumpamount = -600
     self.grounded = false
 

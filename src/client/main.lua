@@ -6,6 +6,7 @@ require("player")
 local collider = {}
 
 function love.load()
+    love.physics.setMeter(32)
 	Map = sti("assets/maps/menu.lua", {"box2d"})
 	world = wf.newWorld(0, 0)
     world:setCallbacks(beginContact,endContact)
