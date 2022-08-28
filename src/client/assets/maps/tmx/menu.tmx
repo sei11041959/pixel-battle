@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="14">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
  <editorsettings>
   <export target="../menu.lua" format="lua"/>
  </editorsettings>
@@ -33,7 +33,9 @@
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 </data>
  </layer>
- <objectgroup color="#ff0000" id="3" name="collide">
+ <objectgroup color="#ffffff" id="3" name="collide">
   <object id="13" x="0" y="640" width="1280" height="96"/>
+  <object id="14" x="0" y="608" width="96" height="32"/>
+  <object id="15" x="1216" y="608" width="64" height="32"/>
  </objectgroup>
 </map>
