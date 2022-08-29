@@ -6,6 +6,8 @@ require("player")
 function love.load()
 	world = wf.newWorld(0, 0)
     world:addCollisionClass('Player')
+    world:addCollisionClass('Ground')
+    world:addCollisionClass('Platform')
     world:setCallbacks(beginContact,endContact)
     map:load()
 	Player:load()
@@ -17,11 +19,12 @@ function love.update(dt)
 end
 
 function love.draw()
+    love.graphics.draw(love.graphics.newImage("assets/img/background.png"))
     map:draw()
     world:draw()
-	love.graphics.push()
+	--love.graphics.push()
 	Player:draw()
-	love.graphics.pop()
+	--love.graphics.pop()
 end
 
 function love.keypressed(key)

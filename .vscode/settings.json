@@ -4,7 +4,8 @@
         "lowercase-global",
         "need-check-nil",
         "redundant-parameter",
-        "param-type-mismatch"
+        "param-type-mismatch",
+        "undefined-field"
     ],
     "Lua.runtime.version": "LuaJIT",
     "Lua.workspace.library": [
