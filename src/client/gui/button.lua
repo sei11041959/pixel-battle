@@ -1,5 +1,3 @@
-require("lib.log")
-
 Button = {}
 
 

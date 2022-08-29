@@ -9,8 +9,8 @@ return {
   height = 68,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 6,
-  nextobjectid = 127,
+  nextlayerid = 7,
+  nextobjectid = 129,
   properties = {},
   tilesets = {
     {
@@ -256,6 +256,25 @@ return {
             { x = 32, y = 0 }
           },
           properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          class = "",
+          shape = "polygon",
+          x = 1920,
+          y = 960,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 0, y = 128 },
+            { x = -1920, y = 128 },
+            { x = -1920, y = 0 }
+          },
+          properties = {}
         }
       }
     },
@@ -327,25 +346,6 @@ return {
             { x = 0, y = 32 },
             { x = 80, y = 32 },
             { x = 80, y = 0 }
-          },
-          properties = {}
-        },
-        {
-          id = 49,
-          name = "",
-          class = "",
-          shape = "polygon",
-          x = 1920,
-          y = 960,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 0, y = 128 },
-            { x = -1920, y = 128 },
-            { x = -1920, y = 0 }
           },
           properties = {}
         }

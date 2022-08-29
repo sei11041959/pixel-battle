@@ -1,6 +1,7 @@
 local wf = require('lib.windfield')
 
-require("menu.map")
+require("gui.main")
+require("lib.map")
 require("player")
 
 function love.load()
@@ -9,11 +10,13 @@ function love.load()
     world:addCollisionClass('Ground')
     world:addCollisionClass('Platform')
     world:setCallbacks(beginContact,endContact)
+    gui:load()
     map:load()
 	Player:load()
 end
 
 function love.update(dt)
+    gui:updata(dt)
 	world:update(dt)
 	Player:update(dt)
 end
@@ -21,13 +24,14 @@ end
 function love.draw()
     love.graphics.draw(love.graphics.newImage("assets/img/background.png"))
     map:draw()
+    gui:draw()
     world:draw()
 	--love.graphics.push()
 	Player:draw()
 	--love.graphics.pop()
 end
 
-function love.keypressed(key)
+function love.keypressed(key, scancode, isrepeat)
     Player:jump(key)
 end
 

@@ -5,7 +5,9 @@
         "need-check-nil",
         "redundant-parameter",
         "param-type-mismatch",
-        "undefined-field"
+        "undefined-field",
+        "undefined-doc-name",
+        "undefined-doc-param"
     ],
     "Lua.runtime.version": "LuaJIT",
     "Lua.workspace.library": [
