@@ -12,23 +12,23 @@ function love.load()
     world:setCallbacks(beginContact,endContact)
     gui:load()
     map:load()
-	Player:load()
+	--Player:load()
 end
 
 function love.update(dt)
-    gui:updata(dt)
 	world:update(dt)
+    map:update(dt)
+    gui:update(dt)
 	Player:update(dt)
 end
 
 function love.draw()
-    love.graphics.draw(love.graphics.newImage("assets/img/background.png"))
     map:draw()
-    gui:draw()
     world:draw()
-	--love.graphics.push()
+	love.graphics.push()
+    gui:draw()
 	Player:draw()
-	--love.graphics.pop()
+	love.graphics.pop()
 end
 
 function love.keypressed(key, scancode, isrepeat)

@@ -151,11 +151,11 @@
 </data>
  </layer>
  <objectgroup id="2" name="GroundCollision">
-  <object id="116" x="880" y="784">
-   <polygon points="0,0 0,80 64,80 64,176 96,176 96,48 32,48 32,0"/>
-  </object>
   <object id="49" x="1920" y="960">
    <polygon points="0,0 0,128 -1920,128 -1920,0"/>
+  </object>
+  <object id="116" x="880" y="784">
+   <polygon points="0,0 0,80 64,80 64,176 96,176 96,48 32,48 32,0"/>
   </object>
  </objectgroup>
  <objectgroup id="5" name="PlatformCollision">

@@ -4,8 +4,10 @@ map = {}
 collider = {}
 test = {}
 
+local background = love.graphics.newImage("assets/img/background.png")
+
 function map:load()
-    MenuMap = sti("assets/maps/menu.lua", {"box2d"})
+    MenuMap = sti("assets/maps/menu.lua", { "box2d" })
     if MenuMap.layers["GroundCollision"] then
         MenuMap.layers.GroundCollision.visible = false
         for i, obj in ipairs(MenuMap.layers["GroundCollision"].objects) do
@@ -40,12 +42,14 @@ end
 
 
 function map:update(dt)
+    MenuMap:update(dt)
 end
 
 
 function map:draw()
-    MenuMap:draw(0,0)
-    for index, v in ipairs(test) do
+    love.graphics.draw(background)
+    MenuMap:draw()
+    for i, v in ipairs(test) do
         love.graphics.rectangle("fill",v.x-2.5,v.y-2.5,5,5)
     end
 end

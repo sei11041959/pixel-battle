@@ -25,18 +25,24 @@ function Player:load()
     self.physics.body:setCollisionClass('Player')
     self.physics.body:setFixedRotation(true)
     self.physics.fixtures = self.physics.body:getFixtures()
+
+    self.load_conplete = true
 end
 
 
 function Player:update(dt)
-    self:syncPhysics()
-    self:move(dt)
-    self:applyGravity(dt)
+    if self.load_conplete then
+        self:syncPhysics()
+        self:move(dt)
+        self:applyGravity(dt)
+    end
 end
 
 
 function Player:draw()
-    love.graphics.rectangle("fill",self.x - self.width / 2, self.y - self.height / 2, self.width, self.height)
+    if self.load_conplete then
+        love.graphics.rectangle("fill",self.x - self.width / 2, self.y - self.height / 2, self.width, self.height)
+    end
 end
 
 
@@ -86,20 +92,22 @@ function Player:applyGravity(dt)
 end
 
 function Player:beginContact(a, b , collision)
-    if self.grounded == true then return end
-    local nx ,ny = collision:getNormal()
-    for i, fixture in ipairs(self.physics.fixtures) do
-        if a == fixture then
-            if ny < 0 then
-                self:onGround(collision)
-            elseif ny == 1 then
-                self:nonGround(collision)
-            end
-        elseif b == fixture then
-            if ny < 0 then
-                self:onGround(collision)
-            elseif ny == 1 then
-                self:nonGround(collision)
+    if self.load_conplete then
+        if self.grounded == true then return end
+        local nx ,ny = collision:getNormal()
+        for i, fixture in ipairs(self.physics.fixtures) do
+            if a == fixture then
+                if ny < 0 then
+                    self:onGround(collision)
+                elseif ny == 1 then
+                    self:nonGround(collision)
+                end
+            elseif b == fixture then
+                if ny < 0 then
+                    self:onGround(collision)
+                elseif ny == 1 then
+                    self:nonGround(collision)
+                end
             end
         end
     end
@@ -107,16 +115,18 @@ end
 
 
 function Player:endContact(a, b , collision)
-    for i, fixture in ipairs(self.physics.fixtures) do
-        local nx ,ny = collision:getNormal()
-        if a == fixture then
-            if self.currentGroundCollision == collision then
-                self.grounded = false
+    if self.load_conplete then
+        for i, fixture in ipairs(self.physics.fixtures) do
+            local nx ,ny = collision:getNormal()
+            if a == fixture then
+                if self.currentGroundCollision == collision then
+                    self.grounded = false
+                end
             end
-        end
-        if b == fixture then
-            if self.currentGroundCollision == collision then
-                self.grounded = false
+            if b == fixture then
+                if self.currentGroundCollision == collision then
+                    self.grounded = false
+                end
             end
         end
     end
@@ -135,9 +145,11 @@ function Player:nonGround(collision)
 end
 
 function Player:jump(key)
-    if (key == "w" or key == "up" or key == "space") and self.grounded == true then
-        self.yVel = self.jumpamount
-        self.grounded = false
+    if self.load_conplete then
+        if (key == "w" or key == "up" or key == "space") and self.grounded == true then
+            self.yVel = self.jumpamount
+            self.grounded = false
+        end
     end
 end
 

@@ -235,6 +235,25 @@ return {
       properties = {},
       objects = {
         {
+          id = 49,
+          name = "",
+          class = "",
+          shape = "polygon",
+          x = 1920,
+          y = 960,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 0, y = 128 },
+            { x = -1920, y = 128 },
+            { x = -1920, y = 0 }
+          },
+          properties = {}
+        },
+        {
           id = 116,
           name = "",
           class = "",
@@ -254,25 +273,6 @@ return {
             { x = 96, y = 48 },
             { x = 32, y = 48 },
             { x = 32, y = 0 }
-          },
-          properties = {}
-        },
-        {
-          id = 49,
-          name = "",
-          class = "",
-          shape = "polygon",
-          x = 1920,
-          y = 960,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 0, y = 128 },
-            { x = -1920, y = 128 },
-            { x = -1920, y = 0 }
           },
           properties = {}
         }
