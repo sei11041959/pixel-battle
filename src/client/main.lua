@@ -1,4 +1,5 @@
 local wf = require('lib.windfield')
+local flux = require("lib.flux")
 
 require("gui.main")
 require("lib.map")
@@ -16,15 +17,20 @@ function love.load()
 end
 
 function love.update(dt)
-	world:update(dt)
-    map:update(dt)
+    flux.update(dt)
+    if Player.load_conplete then
+        world:update(dt)
+        map:update(dt)
+    end
     gui:update(dt)
 	Player:update(dt)
 end
 
 function love.draw()
-    map:draw()
-    world:draw()
+    if Player.load_conplete then
+        map:draw()
+        world:draw()
+    end
 	love.graphics.push()
     gui:draw()
 	Player:draw()

@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 7,
-  nextobjectid = 129,
+  nextobjectid = 132,
   properties = {},
   tilesets = {
     {
