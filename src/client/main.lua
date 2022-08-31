@@ -41,6 +41,11 @@ function love.keypressed(key, scancode, isrepeat)
     Player:jump(key)
 end
 
+function love.mousepressed(x,y,key)
+    love.thread.getChannel('mouseKey'):push(key)
+    print(key)
+end
+
 function beginContact(a, b , collision)
     Player:beginContact(a, b , collision)
 end

@@ -8,10 +8,9 @@ local flux = require("lib.flux")
 button = {}
 
 return helium(function (param,view)
-    local font = useState{size = 40}
 
     local clickSFX = love.audio.newSource("assets/audio/click.wav", "static")
-    local buttonfont = love.graphics.newFont('assets/font/UbuntuMono-R.ttf', font.size)
+    local buttonfont = love.graphics.newFont('assets/font/UbuntuMono-R.ttf',40)
 
     local aqua = {0,0,90}
     local white = {255,255,255}
@@ -37,8 +36,8 @@ return helium(function (param,view)
     local HPC = useState{param.HPC[1],param.HPC[2],param.HPC[3],0}-- HOVER PROGRESS COLOR
 
     local bState = useButton(
-        function ()
-            if param.func and not Player.load_conplete then
+        function (_,_,key)
+            if param.func and not Player.load_conplete and key == 1 then
                 param.func()
                 love.audio.play(clickSFX)
             end
