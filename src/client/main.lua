@@ -31,9 +31,10 @@ function love.draw()
         map:draw()
         world:draw()
     end
-	love.graphics.push()
+    love.graphics.push()
     gui:draw()
 	Player:draw()
+    love.graphics.print(love.timer.getFPS(),0,0)
 	love.graphics.pop()
 end
 
@@ -42,8 +43,6 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.mousepressed(x,y,key)
-    love.thread.getChannel('mouseKey'):push(key)
-    print(key)
 end
 
 function beginContact(a, b , collision)

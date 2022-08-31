@@ -16,8 +16,6 @@ return helium(function(param, view)
 
     local margin = 30
 
-    local background = love.graphics.newImage("assets/img/background.png")
-
     local start = button_creater(
         {bx = 0,
         by = 0,
