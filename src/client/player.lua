@@ -18,7 +18,6 @@ function Player:load()
     self.gravity = 2300
     self.jumpamount = -800
     self.grounded = false
-    self.ceiling = false
 
     self.physics = {}
     self.physics.body = world:newRectangleCollider(self.x,self.y,self.width,self.height)
@@ -33,6 +32,8 @@ end
 function Player:update(dt)
     if self.load_conplete then
         self:syncPhysics()
+        self:jumpContact()
+        self:endContact()
         self:move(dt)
         self:applyGravity(dt)
     end
@@ -91,43 +92,24 @@ function Player:applyGravity(dt)
     end
 end
 
-function Player:beginContact(a, b , collision)
-    if self.load_conplete then
+function Player:jumpContact()
+    if self.physics.body:enter('Ground') or self.physics.body:enter('Platform') then
         if self.grounded == true then return end
-        local nx ,ny = collision:getNormal()
-        for i, fixture in ipairs(self.physics.fixtures) do
-            if a == fixture then
-                if ny < 0 then
-                    self:onGround(collision)
-                elseif ny == 1 then
-                    self:nonGround(collision)
-                end
-            elseif b == fixture then
-                if ny < 0 then
-                    self:onGround(collision)
-                elseif ny == 1 then
-                    self:nonGround(collision)
-                end
-            end
+        local collision_data = self.physics.body:getEnterCollisionData('Ground')
+        local nx ,ny = collision_data.contact:getNormal()
+        if ny < 0 then
+            self:onGround(collision_data.collider)
+        elseif ny == 1 then
+            self:nonGround(collision_data.collider)
         end
     end
 end
 
-
-function Player:endContact(a, b , collision)
-    if self.load_conplete then
-        for i, fixture in ipairs(self.physics.fixtures) do
-            local nx ,ny = collision:getNormal()
-            if a == fixture then
-                if self.currentGroundCollision == collision then
-                    self.grounded = false
-                end
-            end
-            if b == fixture then
-                if self.currentGroundCollision == collision then
-                    self.grounded = false
-                end
-            end
+function Player:endContact()
+    if self.physics.body:exit('Ground') or self.physics.body:exit('Platform') then
+        local collision_data = self.physics.body:getExitCollisionData('Ground')
+        if self.currentGroundCollision == collision_data.collider then
+            self.grounded = false
         end
     end
 end
@@ -147,6 +129,7 @@ end
 function Player:jump(key)
     if self.load_conplete then
         if (key == "w" or key == "up" or key == "space") and self.grounded == true then
+            self.yVel = 0
             self.yVel = self.jumpamount
             self.grounded = false
         end
@@ -154,6 +137,6 @@ function Player:jump(key)
 end
 
 function Player:syncPhysics()
+    self.physics.body:setLinearVelocity(self.xVel,self.yVel)
     self.x,self.y = self.physics.body:getPosition()
-    self.physics.body:setLinearVelocity(self.xVel , self.yVel)
 end

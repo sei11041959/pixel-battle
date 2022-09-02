@@ -10,7 +10,8 @@ function love.load()
     world:addCollisionClass('Player')
     world:addCollisionClass('Ground')
     world:addCollisionClass('Platform')
-    world:setCallbacks(beginContact,endContact)
+    --world:setGravity(0, 50000)
+    --world:setCallbacks(beginContact,endContact)
     gui:load()
     map:load()
 	--Player:load()
@@ -43,12 +44,4 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.mousepressed(x,y,key)
-end
-
-function beginContact(a, b , collision)
-    Player:beginContact(a, b , collision)
-end
-
-function endContact(a, b , collision)
-    Player:endContact(a, b , collision)
 end
