@@ -1,1 +1,1 @@
-os.execute("love src/server")
+os.execute("love src/test/server")

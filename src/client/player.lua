@@ -176,16 +176,6 @@ function Player:jump(key)
     end
 end
 
-function beginContact()
-    if self.load_conplete then
-    end
-end
-
-function endContact()
-    if self.load_conplete then
-    end
-end
-
 function Player:AttackCollider(key)
     if self.load_conplete then
         if key == "space" and not self.attack then
