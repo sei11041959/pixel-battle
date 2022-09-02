@@ -2,6 +2,7 @@ local helium = require("lib.helium")
 local button_creater = require("gui.button_creater")
 
 require("player")
+require("entity.dummy")
 
 
 return helium(function(param, view)
@@ -24,6 +25,7 @@ return helium(function(param, view)
         animation = {0,0,0},
         func = function ()
             Player:load()
+            Dummy:load()
         end,
         HPC = {0,0,60}},
         bw,

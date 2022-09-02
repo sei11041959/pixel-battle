@@ -275,7 +275,23 @@ return {
             { x = 32, y = 0 }
           },
           properties = {}
-        },
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "PlatformCollision",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
         {
           id = 23,
           name = "",
@@ -334,21 +350,6 @@ return {
           properties = {}
         }
       }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 5,
-      name = "PlatformCollision",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
     }
   }
 }

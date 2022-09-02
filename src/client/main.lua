@@ -4,14 +4,15 @@ local flux = require("lib.flux")
 require("gui.main")
 require("lib.map")
 require("player")
+require("entity.dummy")
 
 function love.load()
 	world = wf.newWorld(0, 0)
     world:addCollisionClass('Player')
+    world:addCollisionClass('AttackRange')
+    world:addCollisionClass('Dummy')
     world:addCollisionClass('Ground')
     world:addCollisionClass('Platform')
-    --world:setGravity(0, 50000)
-    --world:setCallbacks(beginContact,endContact)
     gui:load()
     map:load()
 	--Player:load()
@@ -25,6 +26,7 @@ function love.update(dt)
     end
     gui:update(dt)
 	Player:update(dt)
+    Dummy:update(dt)
 end
 
 function love.draw()
@@ -41,6 +43,7 @@ end
 
 function love.keypressed(key, scancode, isrepeat)
     Player:jump(key)
+    Player:AttackCollider(key)
 end
 
 function love.mousepressed(x,y,key)

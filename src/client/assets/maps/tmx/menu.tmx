@@ -157,6 +157,8 @@
   <object id="116" x="880" y="784">
    <polygon points="0,0 0,80 64,80 64,176 96,176 96,48 32,48 32,0"/>
   </object>
+ </objectgroup>
+ <objectgroup id="5" name="PlatformCollision">
   <object id="23" x="320" y="832">
    <polygon points="0,0 0,32 160,32 160,0"/>
   </object>
@@ -167,5 +169,4 @@
    <polygon points="0,0 0,32 80,32 80,0"/>
   </object>
  </objectgroup>
- <objectgroup id="5" name="PlatformCollision"/>
 </map>
